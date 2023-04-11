@@ -9,7 +9,7 @@ namespace ContemporaryProgrammingFinal.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TeamInfo>().HasData(
-                new TeamInfo { FullName = "Tom McReynolds", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" });
+                new TeamInfo { Id = 1, FullName = "Tom McReynolds", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" });
         }
         public DbSet<TeamInfo> Members { get; set; }
 

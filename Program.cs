@@ -1,4 +1,5 @@
 using ContemporaryProgrammingFinal.Data;
+using ContemporaryProgrammingFinal.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ builder.Services.AddSwaggerDocument();
 
 builder.Services.AddDbContext<TeamInfoContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("TeamMembersContext")));
-
+builder.Services.AddScoped<ITeamMembersContextDAO, TeamMembersContextDAO>();
 
 var app = builder.Build();
 
