@@ -5,6 +5,7 @@ namespace ContemporaryProgrammingFinal.Models
     public class Breakfast
     {
         [Key]
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Hot { get; set; }
         public string? Cold { get; set; }

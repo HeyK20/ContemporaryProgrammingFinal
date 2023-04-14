@@ -5,22 +5,22 @@ namespace ContemporaryProgrammingFinal.Data
 {
     public class BreakfastContextDAO : IBreakfastDAO
     {
-        private BreakfastInfoContext _context;
-        public BreakfastContextDAO(BreakfastInfoContext context)
+        private TeamInfoContext _context;
+        public BreakfastContextDAO(TeamInfoContext context)
         {
             _context = context;
         }
 
         public int? AddMember(Breakfast member)
         {
-            var members = _context.Members.Where(x => x.Name.Equals(member.Name)).FirstOrDefault();
+            var members = _context.Items.Where(x => x.Name.Equals(member.Name)).FirstOrDefault();
             if (members != null)
             {
                 return null;
             }
             try
             {
-                _context.Members.Add(member);
+                _context.Items.Add(member);
                 _context.SaveChanges();
                 return 1;
             }
@@ -33,16 +33,16 @@ namespace ContemporaryProgrammingFinal.Data
 
         public List<Breakfast> GetAllMembers()
         {
-            return _context.Members.ToList();
+            return _context.Items.ToList();
         }
         public List<Breakfast> GetFirstFive()
         {
-            return _context.Members.Take(5).ToList();
+            return _context.Items.Take(5).ToList();
         }
 
         public Breakfast GetMember(string name)
         {
-            return _context.Members.Where(x => x.Name.Equals(name)).FirstOrDefault();
+            return _context.Items.Where(x => x.Name.Equals(name)).FirstOrDefault();
         }
 
         public int? RemoveMember(string name)
@@ -51,7 +51,7 @@ namespace ContemporaryProgrammingFinal.Data
             if (member == null) return null;
             try
             {
-                _context.Members.Remove(member);
+                _context.Items.Remove(member);
                 _context.SaveChanges();
                 return 1;
             }
@@ -66,7 +66,7 @@ namespace ContemporaryProgrammingFinal.Data
         {
             var memberToUpdate = this.GetMember(member.Name);
             if (memberToUpdate == null) return null;
-
+            memberToUpdate.Id = member.Id;
             memberToUpdate.Name = member.Name;
             memberToUpdate.Hot = member.Hot;
             memberToUpdate.Cold = member.Cold;
@@ -75,7 +75,7 @@ namespace ContemporaryProgrammingFinal.Data
             memberToUpdate.FatContent = member.FatContent;
             try
             {
-                _context.Members.Update(memberToUpdate);
+                _context.Items.Update(memberToUpdate);
                 _context.SaveChanges();
                 return 1;
             }

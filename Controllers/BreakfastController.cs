@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContemporaryProgrammingFinal.Controllers
 {
     [ApiController]
-    [Route("teammembers")]
+    [Route("breakfast")]
     public class BreakfastController : ControllerBase
     {
         private readonly ILogger<BreakfastController> _logger;
@@ -22,7 +22,7 @@ namespace ContemporaryProgrammingFinal.Controllers
             return Ok(_context.GetAllMembers());
         }
         [HttpGet("name")]
-        public IActionResult Get(string name)
+        public IActionResult Get(string? name)
         {
             var member = _context.GetMember(name);
             if (member == null)

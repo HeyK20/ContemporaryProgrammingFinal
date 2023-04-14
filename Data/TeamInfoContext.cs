@@ -10,8 +10,11 @@ namespace ContemporaryProgrammingFinal.Data
         {
             builder.Entity<TeamInfo>().HasData(
                 new TeamInfo { Id = 1, FullName = "Tom McReynolds", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" });
+
+            builder.Entity<Breakfast>().HasData(
+                new Breakfast { Id = 1, Name = "Eggs", Hot = "y", Cold = "n", Refridgerated = "n", Calories = 60, FatContent = 5 });
         }
         public DbSet<TeamInfo> Members { get; set; }
-
+        public DbSet<Breakfast> Items { get; set; }
     }
 }

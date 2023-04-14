@@ -11,6 +11,10 @@ builder.Services.AddSwaggerDocument();
 builder.Services.AddDbContext<TeamInfoContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("TeamMembersContext")));
 builder.Services.AddScoped<ITeamMembersContextDAO, TeamMembersContextDAO>();
+builder.Services.AddScoped<IBreakfastDAO, BreakfastContextDAO>();
+//builder.Services.AddDbContext<BreakfastInfoContext>(options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("TeamMembersContext")));
+//builder.Services.AddScoped<IBreakfastDAO, BreakfastContextDAO>();
 
 var app = builder.Build();
 
@@ -26,6 +30,9 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TeamInfoContext>();
     db.Database.Migrate();
+
+    //var db2 = scope.ServiceProvider.GetRequiredService<BreakfastInfoContext>();
+    //db2.Database.Migrate();
 }
 
 app.UseHttpsRedirection();
