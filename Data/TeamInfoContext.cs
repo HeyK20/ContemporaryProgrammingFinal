@@ -11,6 +11,9 @@ namespace ContemporaryProgrammingFinal.Data
             builder.Entity<TeamInfo>().HasData(
                 new TeamInfo { Id = 1, FullName = "Tom McReynolds", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" });
 
+            builder.Entity<TeamInfo>().HasData(
+                new TeamInfo { Id = 2, FullName = "Jackson Pinchot", BirthDate = DateTime.Parse("05142003"), CollegeProgram = "Information Technology", FavoriteSeason = "Winter", YearInProgram = "Sophomore" });
+
             builder.Entity<Breakfast>().HasData(
                 new Breakfast { Id = 1, Name = "Eggs", Hot = "y", Cold = "n", Refridgerated = "n", Calories = 60, FatContent = 5 });
         }
