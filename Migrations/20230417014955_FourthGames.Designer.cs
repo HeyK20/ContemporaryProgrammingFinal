@@ -4,6 +4,7 @@ using ContemporaryProgrammingFinal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContemporaryProgrammingFinal.Migrations
 {
     [DbContext(typeof(TeamInfoContext))]
-    partial class TeamInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20230417014955_FourthGames")]
+    partial class FourthGames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,28 +134,6 @@ namespace ContemporaryProgrammingFinal.Migrations
                             PlayerMaximum = 4,
                             PlayerMinimum = 2,
                             ReleaseYear = 2014
-                        },
-                        new
-                        {
-                            Id = 4,
-                            GameCategory = "Board",
-                            Name = "Ark Nova",
-                            PlayTime = "90-150 Minutes",
-                            PlayerAges = "14+",
-                            PlayerMaximum = 4,
-                            PlayerMinimum = 1,
-                            ReleaseYear = 2021
-                        },
-                        new
-                        {
-                            Id = 5,
-                            GameCategory = "Party",
-                            Name = "Werewords",
-                            PlayTime = "10 Minutes",
-                            PlayerAges = "8+",
-                            PlayerMaximum = 10,
-                            PlayerMinimum = 4,
-                            ReleaseYear = 2017
                         });
                 });
 
@@ -187,7 +168,7 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(133),
+                            BirthDate = new DateTime(2023, 4, 16, 21, 49, 55, 713, DateTimeKind.Local).AddTicks(2354),
                             CollegeProgram = "Information Technology",
                             FavoriteSeason = "Summer",
                             FullName = "Tom McReynolds",
@@ -196,7 +177,7 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(177),
+                            BirthDate = new DateTime(2023, 4, 16, 21, 49, 55, 713, DateTimeKind.Local).AddTicks(2404),
                             CollegeProgram = "Information Technology",
                             FavoriteSeason = "Winter",
                             FullName = "Jackson Pinchot",
@@ -205,7 +186,7 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 3,
-                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(180),
+                            BirthDate = new DateTime(2023, 4, 16, 21, 49, 55, 713, DateTimeKind.Local).AddTicks(2407),
                             CollegeProgram = "Software Development",
                             FavoriteSeason = "Fall",
                             FullName = "Audrey Perdew",

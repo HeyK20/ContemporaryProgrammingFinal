@@ -12,6 +12,7 @@ builder.Services.AddDbContext<TeamInfoContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("TeamMembersContext")));
 builder.Services.AddScoped<ITeamMembersContextDAO, TeamMembersContextDAO>();
 builder.Services.AddScoped<IBreakfastDAO, BreakfastContextDAO>();
+builder.Services.AddScoped<IGamesContextDAO, GameContextDAO>();
 //builder.Services.AddDbContext<BreakfastInfoContext>(options =>
 //        options.UseSqlServer(builder.Configuration.GetConnectionString("TeamMembersContext")));
 //builder.Services.AddScoped<IBreakfastDAO, BreakfastContextDAO>();
