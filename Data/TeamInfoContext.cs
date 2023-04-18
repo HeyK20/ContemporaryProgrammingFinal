@@ -9,9 +9,9 @@ namespace ContemporaryProgrammingFinal.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TeamInfo>().HasData(
-                new TeamInfo { Id = 1, FullName = "Tom McReynolds", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" },
-                new TeamInfo { Id = 2, FullName = "Jackson Pinchot", BirthDate = DateTime.Now, CollegeProgram = "Information Technology", FavoriteSeason = "Winter", YearInProgram = "Sophomore" },
-                new TeamInfo { Id = 3, FullName = "Audrey Perdew", BirthDate = DateTime.Now, CollegeProgram = "Software Development", FavoriteSeason = "Fall", YearInProgram = "Senior" });
+                new TeamInfo { Id = 1, FullName = "Tom McReynolds", BirthDate = Convert.ToDateTime("06/01/2000"), CollegeProgram = "Information Technology", FavoriteSeason = "Summer", YearInProgram = "Senior" },
+                new TeamInfo { Id = 2, FullName = "Jackson Pinchot", BirthDate = Convert.ToDateTime("05/14/2003"), CollegeProgram = "Information Technology", FavoriteSeason = "Winter", YearInProgram = "Sophomore" },
+                new TeamInfo { Id = 3, FullName = "Audrey Perdew", BirthDate = Convert.ToDateTime("04/29/1992"), CollegeProgram = "Software Development", FavoriteSeason = "Fall", YearInProgram = "Senior" });
 
             builder.Entity<Breakfast>().HasData(
                 new Breakfast { Id = 1, Name = "Eggs", Hot = "y", Cold = "n", Refridgerated = "n", Calories = 60, FatContent = 5 });
