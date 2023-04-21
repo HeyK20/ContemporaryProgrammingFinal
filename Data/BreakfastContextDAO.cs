@@ -13,7 +13,7 @@ namespace ContemporaryProgrammingFinal.Data
 
         public int? AddMember(Breakfast member)
         {
-            var members = _context.Items.Where(x => x.Name.Equals(member.Name)).FirstOrDefault();
+            var members = _context.Items.Where(x => x.Id.Equals(member.Id)).FirstOrDefault();
             if (members != null)
             {
                 return null;
@@ -40,14 +40,14 @@ namespace ContemporaryProgrammingFinal.Data
             return _context.Items.Take(5).ToList();
         }
 
-        public Breakfast GetMember(string name)
+        public Breakfast GetMember(int id)
         {
-            return _context.Items.Where(x => x.Name.Equals(name)).FirstOrDefault();
+            return _context.Items.Where(x => x.Id.Equals(id)).FirstOrDefault();
         }
 
-        public int? RemoveMember(string name)
+        public int? RemoveMember(int id)
         {
-            var member = this.GetMember(name);
+            var member = this.GetMember(id);
             if (member == null) return null;
             try
             {
@@ -64,7 +64,7 @@ namespace ContemporaryProgrammingFinal.Data
 
         public int? UpdateMember(Breakfast member)
         {
-            var memberToUpdate = this.GetMember(member.Name);
+            var memberToUpdate = this.GetMember(member.Id);
             if (memberToUpdate == null) return null;
             memberToUpdate.Id = member.Id;
             memberToUpdate.Name = member.Name;

@@ -21,21 +21,21 @@ namespace ContemporaryProgrammingFinal.Controllers
         {
             return Ok(_context.GetAllMembers());
         }
-        [HttpGet("name")]
-        public IActionResult Get(string? name)
+        [HttpGet("id")]
+        public IActionResult Get(int id)
         {
-            var member = _context.GetMember(name);
+            var member = _context.GetMember(id);
             if (member == null)
             {
                 return Ok(_context.GetFirstFive());
             }
-            return Ok(_context.GetMember(name));
+            return Ok(_context.GetMember(id));
         }
 
         [HttpDelete]
-        public IActionResult Delete(string name)
+        public IActionResult Delete(int id)
         {
-            var result = _context.RemoveMember(name);
+            var result = _context.RemoveMember(id);
             if (result == null)
             {
                 return NotFound();
@@ -47,13 +47,13 @@ namespace ContemporaryProgrammingFinal.Controllers
             return Ok();
         }
         [HttpPut]
-        public IActionResult Put(Breakfast member)
+        public IActionResult Put(Breakfast id)
         {
-            var result = _context.UpdateMember(member);
+            var result = _context.UpdateMember(id);
 
             if (result == null)
             {
-                return NotFound(member.Name);
+                return NotFound(id.Name);
             }
             if (result == 0)
             {
@@ -62,9 +62,9 @@ namespace ContemporaryProgrammingFinal.Controllers
             return Ok();
         }
         [HttpPost]
-        public IActionResult Post(Breakfast member)
+        public IActionResult Post(Breakfast id)
         {
-            var result = _context.AddMember(member);
+            var result = _context.AddMember(id);
 
             if (result == null)
             {
