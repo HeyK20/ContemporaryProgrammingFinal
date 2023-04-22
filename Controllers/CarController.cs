@@ -1,43 +1,81 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using ContemporaryProgrammingFinal.Data;
+using ContemporaryProgrammingFinal.Interfaces;
+using ContemporaryProgrammingFinal.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContemporaryProgrammingFinal.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    [Route("car")]
+    public class CarController : ControllerBase
     {
-        // GET: api/<ValuesController>
+        private readonly ILogger<CarController> _logger;
+        private readonly ICarContextDAO _context;
+        public CarController(ILogger<CarController> logger, ICarContextDAO context)
+        {
+            _logger = logger;
+            _context = context;
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_context.GetAllCars());
+        }
+        [HttpGet("id")]
+        public IActionResult Get(int id)
+        {
+            var currentCar = _context.GetCar(id);
+            if (currentCar == null)
+            {
+                return Ok(_context.GetFirstFive());
+            }
+            return Ok(_context.GetCar(id));
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpDelete]
+        public IActionResult Delete(int id)
         {
-            return "value";
+            var result = _context.RemoveCar(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            if (result == 0)
+            {
+                return StatusCode(500, "An error has occured");
+            }
+            return Ok();
         }
+        [HttpPut]
+        public IActionResult Put(Car currentCar)
+        {
+            var result = _context.UpdateCar(currentCar);
 
-        // POST api/<ValuesController>
+            if (result == null)
+            {
+                return NotFound(currentCar.Id);
+            }
+            if (result == 0)
+            {
+                return StatusCode(500, "An error has occured");
+            }
+            return Ok();
+        }
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Car currentCar)
         {
+            var result = _context.AddCar(currentCar);
+
+            if (result == null)
+            {
+                return StatusCode(500, "Car already exists");
+            }
+            if (result == 0)
+            {
+                return StatusCode(500, "An error has occured");
+            }
+            return Ok();
         }
 
-        // PUT api/<ValuesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
