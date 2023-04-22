@@ -13,7 +13,7 @@ namespace ContemporaryProgrammingFinal.Data
 
         public int? AddGame(Game game)
         {
-            var games = _context.Games.Where(x => x.Name.Equals(game.Name)).FirstOrDefault();
+            var games = _context.Games.Where(x => x.Name!.Equals(game.Name)).FirstOrDefault();
             if (games != null)
             {
                 return null;
@@ -43,7 +43,7 @@ namespace ContemporaryProgrammingFinal.Data
 
        public Game GetGame(int id)
         {
-            return _context.Games.Where(x => x.Id.Equals(id)).FirstOrDefault();
+            return _context.Games.Where(x => x.Id.Equals(id)).FirstOrDefault()!;
         }
 
         public int? RemoveGame(int id)

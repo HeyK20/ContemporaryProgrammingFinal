@@ -42,7 +42,7 @@ namespace ContemporaryProgrammingFinal.Data
 
         public Breakfast GetMember(int id)
         {
-            return _context.Items.Where(x => x.Id.Equals(id)).FirstOrDefault();
+            return _context.Items.Where(x => x.Id.Equals(id)).FirstOrDefault()!;
         }
 
         public int? RemoveMember(int id)

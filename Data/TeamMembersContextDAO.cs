@@ -13,7 +13,7 @@ namespace ContemporaryProgrammingFinal.Data
 
         public int? AddMember(TeamInfo member)
         {
-            var members = _context.Members.Where(x => x.FullName.Equals(member.FullName)).FirstOrDefault();
+            var members = _context.Members.Where(x => x.FullName!.Equals(member.FullName)).FirstOrDefault();
             if (members != null)
             {
                 return null;
@@ -42,7 +42,7 @@ namespace ContemporaryProgrammingFinal.Data
 
        public TeamInfo GetMember(int id)
         {
-            return _context.Members.Where(x => x.Id.Equals(id)).FirstOrDefault();
+            return _context.Members.Where(x => x.Id.Equals(id)).FirstOrDefault()!;
         }
 
         public int? RemoveMember(int id)
