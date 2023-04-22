@@ -4,6 +4,7 @@ using ContemporaryProgrammingFinal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContemporaryProgrammingFinal.Migrations
 {
     [DbContext(typeof(TeamInfoContext))]
-    partial class TeamInfoContextModelSnapshot : ModelSnapshot
+    [Migration("20230417020436_Games5")]
+    partial class Games5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,46 +64,6 @@ namespace ContemporaryProgrammingFinal.Migrations
                             FatContent = 5,
                             Hot = "y",
                             Name = "Eggs",
-                            Refridgerated = "n"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Calories = 100,
-                            Cold = "n",
-                            FatContent = 4,
-                            Hot = "y",
-                            Name = "Pancakes",
-                            Refridgerated = "n"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Calories = 70,
-                            Cold = "n",
-                            FatContent = 7,
-                            Hot = "y",
-                            Name = "Bacon",
-                            Refridgerated = "n"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Calories = 150,
-                            Cold = "y",
-                            FatContent = 3,
-                            Hot = "n",
-                            Name = "Cereal",
-                            Refridgerated = "n"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Calories = 85,
-                            Cold = "n",
-                            FatContent = 4,
-                            Hot = "y",
-                            Name = "Sausage",
                             Refridgerated = "n"
                         });
                 });
@@ -227,7 +190,7 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateTime(2000, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(133),
                             CollegeProgram = "Information Technology",
                             FavoriteSeason = "Summer",
                             FullName = "Tom McReynolds",
@@ -236,7 +199,7 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDate = new DateTime(2003, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(177),
                             CollegeProgram = "Information Technology",
                             FavoriteSeason = "Winter",
                             FullName = "Jackson Pinchot",
@@ -245,20 +208,11 @@ namespace ContemporaryProgrammingFinal.Migrations
                         new
                         {
                             Id = 3,
-                            BirthDate = new DateTime(1992, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2023, 4, 16, 22, 4, 36, 712, DateTimeKind.Local).AddTicks(180),
                             CollegeProgram = "Software Development",
                             FavoriteSeason = "Fall",
                             FullName = "Audrey Perdew",
                             YearInProgram = "Senior"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BirthDate = new DateTime(1986, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CollegeProgram = "Information Technology",
-                            FavoriteSeason = "Summer",
-                            FullName = "Anna Finkelman",
-                            YearInProgram = "Sophmore"
                         });
                 });
 #pragma warning restore 612, 618

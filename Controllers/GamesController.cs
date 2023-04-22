@@ -6,36 +6,42 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContemporaryProgrammingFinal.Controllers
 {
     [ApiController]
-    [Route("breakfast")]
-    public class BreakfastController : ControllerBase
+    [Route("games")]
+    public class GamesController : ControllerBase
     {
-        private readonly ILogger<BreakfastController> _logger;
-        private readonly IBreakfastDAO _context;
-        public BreakfastController(ILogger<BreakfastController> logger, IBreakfastDAO context)
+        private readonly ILogger<GamesController> _logger;
+        private readonly IGamesContextDAO _context;
+        public GamesController(ILogger<GamesController> logger, IGamesContextDAO context)
         {
             _logger = logger;
             _context = context;
         }
+
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.GetAllMembers());
+            return Ok(_context.GetAllGames());
         }
-        [HttpGet("id")]
-        public IActionResult Get(int id)
+
+        [HttpGet ("id")]
+        public IActionResult Get(int id) 
         {
-            var member = _context.GetMember(id);
-            if (member == null)
+            var game = _context.GetGame(id);
+            if (id == 0)
             {
                 return Ok(_context.GetFirstFive());
             }
-            return Ok(_context.GetMember(id));
+            if (game == null) 
+            {
+                return NotFound();
+            }
+            return Ok(_context.GetGame(id));
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var result = _context.RemoveMember(id);
+            var result = _context.RemoveGame(id);
             if (result == null)
             {
                 return NotFound();
@@ -46,14 +52,15 @@ namespace ContemporaryProgrammingFinal.Controllers
             }
             return Ok();
         }
+
         [HttpPut]
-        public IActionResult Put(Breakfast id)
+        public IActionResult Put(Game game)
         {
-            var result = _context.UpdateMember(id);
+            var result = _context.UpdateGame(game);
 
             if (result == null)
             {
-                return NotFound(id.Name);
+                return NotFound(game.Id);
             }
             if (result == 0)
             {
@@ -61,14 +68,15 @@ namespace ContemporaryProgrammingFinal.Controllers
             }
             return Ok();
         }
+
         [HttpPost]
-        public IActionResult Post(Breakfast id)
+        public IActionResult Post(Game game)
         {
-            var result = _context.AddMember(id);
+            var result = _context.AddGame(game);
 
             if (result == null)
             {
-                return StatusCode(500, "Member already exists");
+                return StatusCode(500, "Game already exists");
             }
             if (result == 0)
             {
