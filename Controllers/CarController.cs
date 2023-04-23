@@ -25,9 +25,13 @@ namespace ContemporaryProgrammingFinal.Controllers
         public IActionResult Get(int id)
         {
             var currentCar = _context.GetCar(id);
-            if (currentCar == null)
+            if(id == 0)
             {
                 return Ok(_context.GetFirstFive());
+            }
+            if (currentCar == null)
+            {
+                return NotFound();
             }
             return Ok(_context.GetCar(id));
         }

@@ -25,9 +25,14 @@ namespace ContemporaryProgrammingFinal.Controllers
         public IActionResult Get(int id) 
         {
             var member= _context.GetMember(id);
-            if (member == null) 
+
+            if (id == 0)
             {
                 return Ok(_context.GetFirstFive());
+            }
+            if (member == null) 
+            {
+                return NotFound();
             }
             return Ok(_context.GetMember(id));
         }
